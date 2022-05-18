@@ -21,4 +21,8 @@ var c = a + b
 func main() {
 	// 单行注释
 	fmt.Println("hello, world")
+
+	fmt.Println("go-test", len("go-test"))
+	fmt.Println("go测试", len("go测试"))
+
 }
