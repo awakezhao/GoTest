@@ -25,12 +25,28 @@ func TestGorm(t *testing.T) {
 		fmt.Println(err)
 	}
 
-	user := User{Name: "Jinzhu", Age: 18}
+	user := User{Name: "Jinzhu2", Age: 18}
 
-	result := db.Create(&user) // 通过数据的指针来创建
-	if result.Error != nil {
-		return
-	} else {
-		fmt.Println(result.RowsAffected)
+	var A User
+
+	err = db.Where("name = ?", user.Name).First(&A).Error
+	if err == nil { //已有
+		fmt.Println(A.Name, A.Age)
+	} else { // 没有
+		result := db.Create(&user) // 通过数据的指针来创建
+		if result.Error != nil {
+			return
+		} else {
+			fmt.Println(result.RowsAffected)
+		}
 	}
 }
+
+// err = dbGlobal.Table(tableName).Where("nickname = ?", req.Nickname).First(&nickData).Error
+// if err == nil {
+// 	if nickData.PlayerID > 0 {
+// 		msg.Head.Result = protocol.ErrorRoleNameExisted
+// 		accSrv.SendMsgWithID(msg)
+// 		return
+// 	}
+// }
