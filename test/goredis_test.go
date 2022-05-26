@@ -28,9 +28,10 @@ func TestOp(t *testing.T) {
 
 	ctx := context.Background()
 
-	rdb.Set(ctx, "key", 100, 0)
+	rdb.Set(ctx, "A:B:C:D:key", 100, 0)
 
-	val, err := rdb.Get(ctx, "key").Result()
+	val, err := rdb.Get(ctx, "A:B:C:D:key").Result()
+
 	if err != nil {
 		fmt.Println(err)
 	} else {
