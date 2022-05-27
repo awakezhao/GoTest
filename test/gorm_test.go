@@ -18,6 +18,10 @@ func (u *User) TableName() string {
 	return "user"
 }
 
+func (u *User) String() string {
+	return fmt.Sprintf("Name:%s\t Age:%d", u.Name, u.Age)
+}
+
 func TestGorm(t *testing.T) {
 	dsn := "root:123456@(localhost)/account?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})

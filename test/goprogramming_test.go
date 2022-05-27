@@ -83,3 +83,11 @@ func Test7(t *testing.T) {
 	fmt.Printf("%v\n", c)
 	fmt.Printf("%g\n", c)
 }
+
+func TestType(t *testing.T) {
+	u := User{
+		Name: "zhz",
+		Age:  18,
+	}
+	fmt.Printf("%v", &u)
+}
