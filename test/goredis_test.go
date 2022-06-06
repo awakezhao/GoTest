@@ -40,4 +40,15 @@ func TestOp(t *testing.T) {
 
 	get := rdb.Get(ctx, "key")
 	fmt.Println(get.Val(), get.Err())
+
+	var min = "(" + "0"
+	ret := rdb.ZRangeByScoreWithScores(context.Background(), "s15:timestamp_rank", &redis.ZRangeBy{
+		Min:    min,
+		Max:    "+inf",
+		Offset: 0,
+		Count:  int64(10),
+	})
+	for _, val := range ret.Val() {
+		fmt.Println(val.Member)
+	}
 }
