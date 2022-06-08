@@ -3,6 +3,7 @@ package util
 import (
 	"fmt"
 	"testing"
+	"time"
 )
 
 func TestTime(t *testing.T) {
@@ -14,4 +15,6 @@ func TestTime(t *testing.T) {
 
 	v = GetYesterday0THTime()
 	fmt.Println(v)
+
+	lg(FormatTimeToYMD(time.Now()))
 }
